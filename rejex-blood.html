@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .bloodform{
+            border: 2px solid black;
+            background-color: aquamarine;
+            padding: 0.5vw 2vw;
+            margin: 0.5vw;
+            border-radius: 0.5vw;
+        }
+        input{
+            width: 100%;
+            padding: 0.3vw;
+        }
+        .ex{
+            height: 10vw;
+        }
+        select{
+            width: 100%;
+            padding: 0.3vw;
+        }
+        .mb2{
+            margin-bottom: 0.8vw;
+        }
+        #btn{
+            padding: 0.3 0.5vw;
+            font-weight: 200%;
+            border-radius: 0.5vw;
+            width: 10%;
+        }
+        textarea{
+            width: 100%;
+            padding: 0.3vw;
+        }
+        p{
+            color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="bloodform">
+        <h1 class="mb2">User Record List</h1>
+        <form onsubmit="return checkrezex()" >
+            <label for="username">Username</label><br>
+            <input type="text" class="mb2" name="" id="username" required><br>
+            <p id="usererror"></p>
+            <label for="emailid">Email Address</label><br>
+            <input type="email" class="mb2" name="" id="emailid" required><br>
+            <p id="emailerror"></p>
+            <label for="bloodgroup">Select your blood group</label><br>
+            <select id="group" class="mb2" name="group">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select><br>
+            <label for="address">Enter your Address</label><br>
+            <textarea name="" id="address" class="mb2" cols="167" rows="7"></textarea><br>
+            <label for="phonenumber">Enter your Mobile Number </label><br>
+            <input type="tel" name="" class="mb2" id="phonenumber" required><br>
+            <p id="numbererror"></p>
+            <label for="extradetail">Any other details regarding your medical health</label><br>
+            <textarea name="" id="extradetail" class="mb2" cols="167" rows="7"></textarea><br>
+            <input type="submit" value="Submit" id="btn">
+        </form>
+    </div>
+    <script>
+        function checkrezex() {
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("emailid").value;
+            let num = document.getElementById("phonenumber").value;
+            let usercheck = /[A-Za-z. ]{3,30}/;
+            let emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,8}$/;
+            let numcheck = /^[6789]{1}[0-9]{9}$/;
+
+            if(usercheck.test(username)){
+                document.getElementById("usererror").innerHTML = " ";
+            }else{
+                console.log("hh");
+                document.getElementById("usererror").innerHTML = " ** invalid username";
+                return false;
+            }
+
+            if(emailcheck.test(email)){
+                document.getElementById("emailerror").innerHTML = " ";
+            }else{
+                document.getElementById("emailerror").innerHTML = " ** invalid email id";
+                return false;
+            }
+
+            if(numcheck.test(num)){
+                document.getElementById("numbererror").innerHTML = " ";
+            }else{
+                document.getElementById("numbererror").innerHTML = " ** invalid mobile number";
+                return false;
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
